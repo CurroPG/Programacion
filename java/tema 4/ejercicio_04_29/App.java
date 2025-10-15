@@ -37,7 +37,8 @@ public class App {
                 return;
             }
         };
-
+        System.out.printf("%-20s%10.2f%n", com, precioComida);
+        
         double precioBebida;
         String beb;
         switch(bebida.toLowerCase()){
@@ -49,6 +50,7 @@ public class App {
             case "café" -> {
                 precioBebida = 1.2;
                 beb = "Café:";
+                
             break;
             }
             default -> {
@@ -56,9 +58,9 @@ public class App {
                 return;
             }
         };
-
+        System.out.printf("%-20s%10.2f%n", beb, precioBebida);
         double total = precioBebida + precioComida;
-        System.out.printf("%-30s%10.2f", "Total desayuno", total);
+        System.out.printf("%-20s%10.2f", "Total desayuno", total);
 
     }   
 }
