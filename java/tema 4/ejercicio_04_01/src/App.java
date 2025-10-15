@@ -1,3 +1,4 @@
+
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.print("Por favor, introduzca un día de la semana y le diré qué asignatura toca a primera hora ese día: ");

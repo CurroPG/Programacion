@@ -1,3 +1,4 @@
+
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Venta de entradas CineTuring.");
@@ -33,7 +34,7 @@ public class App {
                     indPar = "pareja";
                 } else {
                     precioBase = 8.00;
-                    total = 11.00 * (numEntradas / 2) + 8.00;
+                    total = 11.00 * (numEntradas / 2) + precioBase;
                     indPar = "pareja e individual";
                 }
                 break;
