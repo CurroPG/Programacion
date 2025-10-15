@@ -38,37 +38,17 @@ public class App {
             }
         }
 
-        double precioNata = (nata.toLowerCase().equals("si"))? 2.5: 0;
-        double precioNombre = (nombre.toLowerCase().equals("si"))? 2.75: 0;
+        double precioNata = (nata.equals("si")) ? 2.5 : 0;
+        double precioNombre = (nombre.equals("si")) ? 2.75 : 0;
+        double total = precioTarta + precioNata + precioNombre;
 
-        String conSinNata = "";
-        String conSinNombre = "";
-        double total = 0;
-        if (nata.toLowerCase().equals("si") && nombre.toLowerCase().equals("si")){
-            conSinNata = "Con nata:";
-            conSinNombre = "Con nombre:";
-            total = precioTarta + precioNata + precioNombre;
-        }
-        if (nombre.toLowerCase().equals("si") && nombre.toLowerCase().equals("no")){
-            conSinNata = "Con nata:";
-            total = precioTarta + precioNata;
-        }
-        if (nombre.toLowerCase().equals("no") && nombre.toLowerCase().equals("si")){
-            conSinNombre = "Con nombre:";
-            total = precioTarta + precioNombre;
-        }   else{
-                total = precioTarta;
-        }
-        
-        System.out.printf("""
-                %-10s%10.2f
-                %-10s%10.2f
-                %-10s%10.2f
-                %-10s%10.2f
-                """,
-                nomTarta, precioTarta,
-                conSinNata, precioNata,
-                conSinNombre, precioNombre,
-                "Total:", total);
+        System.out.printf("%-30s %6.2f %n", nomTarta, precioTarta);
+
+        if (nata.equals("si"))
+            System.out.printf("%-30s %6.2f %n", "Con nata:", precioNata);
+        if (nombre.equals("si"))
+            System.out.printf("%-30s %6.2f %n", "Con nombre:", precioNombre);
+
+        System.out.printf("%-30s %6.2f %n", "Total:", total);
     }
 }
