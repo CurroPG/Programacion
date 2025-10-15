@@ -4,6 +4,7 @@ public class App {
         String dia = System.console().readLine();
         switch(dia){
             case "Lunes":
+            case "Viernes":
                 System.out.println("Base de Datos");
                 break;
             case "Martes":
@@ -15,11 +16,10 @@ public class App {
             case "Jueves":
                 System.out.println("IPE1");
                 break;
-            case "Viernes":
-                System.out.println("Bse de Datos");
-                break;
+            
+
             default:
-                System.out.println("El día iuntrooducido no es correcto");
+                System.out.println("El día introducido no es correcto");
         }
     }
 }

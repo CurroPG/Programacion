@@ -1,48 +1,60 @@
 public class App {
     public static void main(String[] args) throws Exception {
-        final double PRECIO_ENTRADA_BASE = 8.00;
-        final double PRECIO_ENTRADA_MIERCOLES = 5.00;
-        System.out.println("Venta de entradas CineTuring");
+        System.out.println("Venta de entradas CineTuring.");
 
-        System.out.println("Número de entradas: ");
-        int numeroEntradas = Integer.parseInt(System.console().readLine());
+        System.out.print("Número de entradas: ");
+        int numEntradas = Integer.parseInt(System.console().readLine());
 
-        System.out.println("Día de la semana: ");
+        System.out.print("Día de la semana: ");
         String diaSemana = System.console().readLine();
 
-        System.out.println("¿Tiene tarjeta CineTuring? (s/n) ");
+        System.out.print("¿Tiene tarjeta CineTuring? (s/n) ");
         String tarjeta = System.console().readLine();
 
-        double precioEntrada = 0; 
+        double precioBase = 0;  
+        double total = 0;
+        String indPar = "individual";
+
         switch(diaSemana.toLowerCase()){
-            case "Lunes":
-            case "Martes":
-            case "Viernes":
-            case "Sabado":
-            case "Sábado":
-            case "Domingo":
-                precioEntrada = PRECIO_ENTRADA_BASE;
+            case "Lunes", "Martes", "Viernes", "Sabado", "Sábado", "Domingo":{  
+                precioBase = 8.00;
+                total = precioBase*numEntradas;
                 break;
-            case "Miercoles":
-            case "Miércoles":
-                precioEntrada = PRECIO_ENTRADA_MIERCOLES;
+            }
+            case "Miercoles", "Miércoles":{ 
+                precioBase = 5.00;
+                total = precioBase*numEntradas;
                 break;
-            case "Jueves":
-                if (numeroEntradas % 2 == 0)
-                    precioEntrada = 11*(numeroEntradas/2);
-                    else 
-                        precioEntrada = 11*(numeroEntradas/2) + PRECIO_ENTRADA_BASE; 
-            default:
-                System.out.println("Por favor, introduzca un dia de la semana.");
+            }
+            case "Jueves":{ 
+                if (numEntradas % 2 == 0){
+                    precioBase = 11;
+                }
+                total = (numEntradas % 2 == 0)? 11*(numEntradas/2): 11*(numEntradas/2) + 8;
+                indPar = "pareja";
                 break;
-        };
-        
-        double descuento = 0;
-        if (tarjeta.equals("s"))
-            descuento = precioEntrada*0.1;
+            }
+            default: System.out.println("Introduce un día de la semana.");
+        }
+
+        double descuento;
+        if (tarjeta.toLowerCase().equals("s"))
+            descuento = total*0.1;
             else
                 descuento = 0;
         
-        
+        double aPagar = total - descuento;
+        System.out.printf("""
+                Entrada %s %10d
+                Precio por entrada %s%10.2f
+                Total %10.2f
+                Descuento %10.2f
+                A pagar %10.2f
+                """,
+                indPar, numEntradas,
+                indPar, precioBase,
+                total,
+                descuento,
+                aPagar);
     }
 }
