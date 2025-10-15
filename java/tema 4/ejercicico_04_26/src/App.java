@@ -11,32 +11,39 @@ public class App {
         System.out.print("¿Tiene tarjeta CineTuring? (s/n) ");
         String tarjeta = System.console().readLine();
 
-        double precioBase = 0;  
-        double total = 0;
+        double precioBase;  
+        double total;
         String indPar = "individual";
 
         switch(diaSemana.toLowerCase()){
-            case "Lunes", "Martes", "Viernes", "Sabado", "Sábado", "Domingo":{  
+            case "lunes", "martes", "viernes", "sabado", "sábado", "domingo" -> {  
                 precioBase = 8.00;
                 total = precioBase*numEntradas;
                 break;
             }
-            case "Miercoles", "Miércoles":{ 
+            case "miercoles", "miércoles" -> { 
                 precioBase = 5.00;
                 total = precioBase*numEntradas;
                 break;
             }
-            case "Jueves":{ 
+            case "jueves" -> { 
                 if (numEntradas % 2 == 0){
                     precioBase = 11;
+                    total = 11*(numEntradas/2);
+                    indPar = "pareja";
+                } else {
+                    precioBase = 8.00;
+                    total = 11.00 * (numEntradas / 2) + 8.00;
+                    indPar = "pareja e individual";
                 }
-                total = (numEntradas % 2 == 0)? 11*(numEntradas/2): 11*(numEntradas/2) + 8;
-                indPar = "pareja";
                 break;
             }
-            default: System.out.println("Introduce un día de la semana.");
+            default -> {
+                System.out.println("Introduce un día de la semana.");
+                return;
+            }
         }
-
+        
         double descuento;
         if (tarjeta.toLowerCase().equals("s"))
             descuento = total*0.1;
