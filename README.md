@@ -178,4 +178,4 @@ java App
 ## 👤 Autor
 
 **Curro Portillo Guerrero**  
-Ejercicios de programación en Java — Curso de Desarrollo de Aplicaciones Web (DAW)
+Ejercicios de programación en Java — Curso de Desarrollo de Aplicaciones Multiplataforma (DAM)
